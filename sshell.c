@@ -1,6 +1,7 @@
 #include "sshell.h"
 /**
- * main - Entry of the program
+ * main - Entry point o_f the program
+ * int
  * @ac: argument count
  * @av: argument vector
  * @env: double pointer to current environment
