@@ -1,21 +1,20 @@
 #include "sshell.h"
-
 /**
- * _env - deals with environmental variables
- * @env : double pointer to the environmental variable
- * Return: Always 0 upon success
+ * print_environment - Print environmental variables to stdout.
+ * @env: Double pointer to environmental variables.
+ * Return: Always 0 upon success.
  */
-
-int _env(char **env)
+int print_environment(char **env)
 {
-int tkn = 0;
-int length = 0;
-while (env[tkn] != NULL)
+int index = 0;
+while (env[index] != NULL)
 {
-length = string_length(env[tkn]);
-write(STDOUT_FILENO,env[tkn],length);
-write(STDOUT_FILENO,"\n", 1);
-tkn++;
+/* Calculate the length of the environmental variable*/
+int variable_length = string_length(env[index]);
+/* Write the environmental variable along with its value to stdout*/
+write(STDOUT_FILENO, env[index], variable_length);
+write(STDOUT_FILENO, "\n", 1);
+index++;
 }
 return (0);
 }
