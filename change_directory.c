@@ -1,4 +1,4 @@
-#include "simple_shell.h"
+#include "sshell.h"
 /**
  * change_directory - Changes the current working directory
  * @args: Double pointer to an array of command inputs

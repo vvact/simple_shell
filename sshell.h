@@ -24,4 +24,9 @@ char *con_cat(char *cat, char *s1, char *s2);
 char **tokenize_string(char *user_input);
 int main(int ac, char **av, char **env);
 int change_directory(char **args, char **env_vars);
+void handle_ctrl_c(int signal);
+int handle_ctrl_d(char *user_input);
+path_t *develop_likedlist(char *s);
+void error_hand(char **argv, char **arr, int cmdnum, char *l, char *new_l);
+int exec_cmd(char **arr, char **env, char **v, char *l, char *new_l, int cmdn);
 #endif
