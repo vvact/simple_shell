@@ -23,4 +23,5 @@ int _putchar(char c);
 char *con_cat(char *cat, char *s1, char *s2);
 char **tokenize_string(char *user_input);
 int main(int ac, char **av, char **env);
-
+int change_directory(char **args, char **env_vars);
+#endif
