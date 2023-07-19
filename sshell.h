@@ -1,7 +1,6 @@
 #ifndef SIMPLE_SHELL_H
 #define SIMPLE_SHELL_H
 
-#include <math.h>
 #include <stddef.h>
 #include <stdlib.h>
 #include <limits.h>
@@ -14,46 +13,14 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 
-/**
- * struct paths - structure for PATH variables
- * @dir: directory to search
- * @next: pointer to the next node
- * @calculate_tenth- Calculate the initial value of 'tenth'.
- */
-
-typedef struct paths
-{
-	char *dir;
-	struct paths *next;
-} path_t;
-
-int str_cmp(char *s1, char *s2);
-char *str_dup(char *s);
-char *rea_lloc(char *d);
-int atois(char *s);
-void list_free(path_t *h);
-void tkn_free(char **token_array);
-void control_c(int sig);
-int control_d(char *lines);
-int str_len(char *s);
-char *str_concat(char *s1, char *s2);
-char *con_cat(char *cat, char *s1, char *s2);
-int tens_point(int k, char *m);
-void free_everything(char *l, char *new_l, char **arr);
-char *_printint(int number);
-int change_dir(char **arr, char **env);
-int _env(char **env);
-int exit_shell(char **arr, char *l, char *new_l, int cmd_num);
-int inbuilts(char **arr, char **env, char *l, char *new_l, int cmd_num);
+static int calculate_tenth(int start_index, char *s);
+int print_environment(char **env);
 void error_hand(char **argv, char **arr, int cmdnum, char *l, char *new_l);
-char *pathhand(char *s, char **env);
-char *get_env(const char *jina, char **env);
-path_t *appendnode(char *s, path_t *lists);
-path_t *develop_likedlist(char *s);
+void free_everything(char *1, char *new_1,char **arr);
+void tkn_free(char **token_array);
+char *_printint(int number);
 int _putchar(char c);
-int exec_cmd(char **arr, char **env, char **v, char *l, char *new_l, int cmdn);
-void printprompt(void);
-char **str_tkn(char *l);
-static int calculate_tenth(int start_index, char *s)
+char *con_cat(char *cat, char *s1, char *s2);
+char **tokenize_string(char *user_input);
+int main(int ac, char **av, char **env);
 
-#endif
