@@ -16,7 +16,7 @@
 static int calculate_tenth(int start_index, char *s);
 int print_environment(char **env);
 void error_hand(char **argv, char **arr, int cmdnum, char *l, char *new_l);
-void free_everything(char *1, char *new_1,char **arr);
+void free_everything(char *1, char *new_1, char **arr);
 void tkn_free(char **token_array);
 char *_printint(int number);
 int _putchar(char c);
@@ -29,4 +29,8 @@ int handle_ctrl_d(char *user_input);
 path_t *develop_likedlist(char *s);
 void error_hand(char **argv, char **arr, int cmdnum, char *l, char *new_l);
 int exec_cmd(char **arr, char **env, char **v, char *l, char *new_l, int cmdn);
+static int calculate_tenth(int start_index, char *s);
+int shell_exit(char **args, char *original_input, char *input_with_newline, int command_count);
+char *get_env(const char *var_name, char **env);
+
 #endif
