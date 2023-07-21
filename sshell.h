@@ -27,4 +27,11 @@ typedef struct paths
 int atois(char *input_str);
 path_t *append_directories(char *path_variable, path_t *path_list);
 void free_directory_list(path_t *path_list);
+int change_directory(char **args, char **env_vars);
+void handle_ctrl_c(int signal);
+int handle_ctrl_d(char *user_input);
+int print_environment(char **env);
+int _env(char **env);
+void tkn_free(char **token_array);
+int inbuilts(char **arr, char **env, char *l, char *new_l, int cmd_num);
 #endif
