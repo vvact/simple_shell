@@ -1,50 +1,45 @@
-#include "sshell.h"
+#include "simple_shell.h"
 #define STRING_DELIM " \t\0"
-/**
- * tokenize_string - Splits user input into individual tokens.
- * @user_input: The string containing the user's input.
- * Return: An array of tokens.
-*/
-char **tokenize_string(char *user_input)
-{
-int token_count = 0, i = 0, current_token_index = 0;
-char **token_array, *current_token, *token_copy;
-/* Check if the user_input is NULL */
-if (user_input == NULL)
-return (NULL);
-/* Count the number of tokens in the user_input */
-int i = 0;
-while (user_input[i] != '\0')
-{
-if (user_input[i] != ' ' && (user_input[i + 1] == ' ' ||
-user_input[i + 1] == '\0' || user_input[i + 1] == '\t'))
-token_count++;
-i++;
-}
-/* Allocate memory for the token_array*/
-token_array = malloc(sizeof(char *) * (token_count + 1));
-if (token_array == NULL)
-return (NULL);
-/* Tokenize the input string using strtok*/
-current_token = strtok(user_input, STRING_DELIM);
-while (current_token != NULL)
-{
-/* Duplicate the current_token and store it in token_copy*/
-token_copy = str_dup(current_token);
-if (token_copy == NULL)
-{
-/* If  free previously allocated memory and return NULL*/
-free(token_array);
-return (NULL);
-}
-/* Store the pointer in the token_array*/
-token_array[current_token_index] = token_copy;
-/* Move to the next token*/
-current_token = strtok(NULL, STRING_DELIM);
-current_token_index++;
-}
-/* Set the last element of the token_array to NULL as a*/
-token_array[current_token_index] = NULL;
-return (token_array);
-}
 
+/**
+ * str_tkn - divides user input int tokens
+ * @l: user's input
+ * Return: array of tokens
+ */
+char **str_tkn(char *l)
+{
+	int k = 0;
+	int tkn_index = 0;
+	char **tkn_arr;
+	char *tkn, *tkncpy;
+
+	if (l == NULL)
+		return (NULL);
+	while (*(l + k) != '\0')
+	{
+		if (l[k] != ' ' && (l[k + 1] == ' ' || l[k + 1] == '\0'
+					|| l[k + 1] == '\t'))
+			tkn_index++;
+		k++;
+	}
+
+	k = 0;
+	tkn_arr = malloc(sizeof(char *) * (tkn_index + 1));
+	if (tkn_arr == NULL)
+		return (NULL);
+	tkn = strtok(l, STRING_DELIM);
+	while (tkn != NULL)
+	{
+		tkncpy = str_dup(tkn);
+		if (tkncpy == NULL)
+		{
+			free(tkn_arr);
+			return (NULL);
+		}
+		*(tkn_arr + k) = tkncpy;
+		tkn = strtok(NULL, STRING_DELIM);
+		k++;
+	}
+	*(tkn_arr + k) = NULL;
+	return (tkn_arr);
+}
