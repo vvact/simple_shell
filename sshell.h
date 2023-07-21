@@ -36,5 +36,7 @@ void tkn_free(char **token_array);
 int inbuilts(char **arr, char **env, char *l, char *new_l, int cmd_num);
 void list_free(path_t *h);
 char *pathhand(char *s, char **env);
+void printprompt(void);
+char *rea_lloc(char *d);
 
 #endif
