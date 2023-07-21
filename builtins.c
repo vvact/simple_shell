@@ -18,7 +18,7 @@ int inbuilts(char **arr, char **env, char *l, char *new_l, int cmd_num)
 	if (str_cmp((arr[0]), "exit") == 0)
 		return (exit_shell(arr, l, new_l, cmd_num));
 	else if (str_cmp((arr[0]), "cd") == 0)
-		return (change_dir(arr, env));
+		return (change_directory(arr, env));
 	else if (str_cmp((arr[0]), "env") == 0)
 		return (_env(env));
 	else
