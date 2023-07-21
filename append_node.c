@@ -1,4 +1,4 @@
-#include "sshel.h"
+#include "sshell.h"
 /**
  * append_directories - Append path directories from a path variable
  * @path_variable: Pointer to the path variable

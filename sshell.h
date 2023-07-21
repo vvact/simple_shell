@@ -13,24 +13,18 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 
-static int calculate_tenth(int start_index, char *s);
-int print_environment(char **env);
-void error_hand(char **argv, char **arr, int cmdnum, char *l, char *new_l);
-void free_everything(char *1, char *new_1, char **arr);
-void tkn_free(char **token_array);
-char *_printint(int number);
-int _putchar(char c);
-char *con_cat(char *cat, char *s1, char *s2);
-char **tokenize_string(char *user_input);
-int main(int ac, char **av, char **env);
-int change_directory(char **args, char **env_vars);
-void handle_ctrl_c(int signal);
-int handle_ctrl_d(char *user_input);
-path_t *develop_likedlist(char *s);
-void error_hand(char **argv, char **arr, int cmdnum, char *l, char *new_l);
-int exec_cmd(char **arr, char **env, char **v, char *l, char *new_l, int cmdn);
-static int calculate_tenth(int start_index, char *s);
-int shell_exit(char **args, char *original_input, char *input_with_newline, int command_count);
-char *get_env(const char *var_name, char **env);
+/**
+ * struct paths - structure for PATH variables
+ * @dir: directory to search
+ * @next: pointer to the next node
+ */
 
+typedef struct paths
+{
+	char *directory;
+	struct paths *next;
+} path_t;
+int atois(char *input_str);
+path_t *append_directories(char *path_variable, path_t *path_list);
+void free_directory_list(path_t *path_list);
 #endif
