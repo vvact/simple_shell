@@ -1,17 +1,17 @@
 #ifndef SIMPLE_SHELL_H
 #define SIMPLE_SHELL_H
 
+#include <fcntl.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/wait.h>
+#include <sys/types.h>
 #include <stddef.h>
 #include <stdlib.h>
 #include <limits.h>
 #include <time.h>
 #include <sys/stat.h>
 #include <string.h>
-#include <fcntl.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <sys/wait.h>
-#include <sys/types.h>
 
 /**
  * struct paths - structure for PATH variables
@@ -24,22 +24,33 @@ typedef struct paths
 	char *directory;
 	struct paths *next;
 } path_t;
-int atois(char *input_str);
-path_t *append_directories(char *path_variable, path_t *path_list);
-void free_directory_list(path_t *path_list);
-int change_directory(char **args, char **env_vars);
-void handle_ctrl_c(int signal);
-int handle_ctrl_d(char *user_input);
-int print_environment(char **env);
-int _env(char **env);
-void tkn_free(char **token_array);
-int inbuilts(char **arr, char **env, char *l, char *new_l, int cmd_num);
-void list_free(path_t *h);
-char *pathhand(char *s, char **env);
-void printprompt(void);
-char *rea_lloc(char *d);
+
 int str_cmp(char *s1, char *s2);
 char *str_dup(char *s);
-int main(int ac, char **av, char **env);
+char *rea_lloc(char *d);
+int atois(char *s);
+void list_free(path_t *h);
+void tkn_free(char **token_array);
+void control_c(int sig);
+int control_d(char *lines);
+int str_len(char *s);
+char *str_concat(char *s1, char *s2);
+char *con_cat(char *cat, char *s1, char *s2);
+int tens_point(int k, char *m);
+void free_everything(char *l, char *new_l, char **arr);
+char *_printint(int number);
+int change_dir(char **arr, char **env);
+int _env(char **env);
+int exit_shell(char **arr, char *l, char *new_l, int cmd_num);
+int inbuilts(char **arr, char **env, char *l, char *new_l, int cmd_num);
+void error_hand(char **argv, char **arr, int cmdnum, char *l, char *new_l);
+char *pathhand(char *s, char **env);
+char *get_env(const char *jina, char **env);
+path_t *appendnode(char *s, path_t *lists);
+path_t *develop_likedlist(char *s);
+int _putchar(char c);
+int exec_cmd(char **arr, char **env, char **v, char *l, char *new_l, int cmdn);
+void printprompt(void);
+char **str_tkn(char *l);
 
 #endif

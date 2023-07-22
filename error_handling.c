@@ -1,4 +1,4 @@
-#include "simple_shell.h"
+#include "sshell.h"
 
 /**
  * error_hand - Deals with errors
