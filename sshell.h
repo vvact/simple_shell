@@ -40,5 +40,6 @@ void printprompt(void);
 char *rea_lloc(char *d);
 int str_cmp(char *s1, char *s2);
 char *str_dup(char *s);
+int main(int ac, char **av, char **env);
 
 #endif

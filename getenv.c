@@ -1,41 +1,29 @@
 #include "sshell.h"
 
 /**
- * get_env - Search for the value of an environment variable.
- * @variable_name: The name of the environment variable to search for.
- * @env_vars: The array of environment variables.
- * Return: A pointer to the value of the environment variable.
+ * get_env - searches for env variables
+ * @jina: pointer to the var name
+ * @env: double pointer to env var
+ * Return: ptr to the env var
  */
-char *get_env(const char *variable_name, char **env_vars)
+char *get_env(const char *jina, char **env)
 {
-int env_index = 0;
-int char_index = 0;
+	int k = 0, m = 0;
 
-/*Check if the input arguments are valid*/
-if (variable_name == NULL || env_vars == NULL || *env_vars == NULL)
-return (NULL);
-
-/*Iterate through the array of environment variables*/
-while (env_vars[env_index] != NULL)
-{
-/*Compare each character of the variable*/
-while (env_vars[env_index][char_index] == variable_name[char_index])
-char_index++;
-
-/*If the comparison matches up to the '=' character*/
-if (env_vars[env_index][char_index] == '=')
-{
-char_index++; /*Move past '=' to point to the value*/
-return (&(env_vars[env_index][char_index])); /*Returnpointer*/
+	if (jina == NULL || env == NULL || *env == NULL)
+		return (NULL);
+	while (env[k] != NULL)
+	{
+		while (env[k][m] == jina[m])
+			m++;
+		if (env[k][m] == '=')
+		{
+			m++;
+			return (&(env[k][m]));
+		}
+		k++;
+		m = 0;
+	}
+	write(STDOUT_FILENO, "env var not found!", 18);
+	return (NULL);
 }
-
-/*Move to the next environment variable*/
-env_index++;
-char_index = 0; /*Reset the index for the next comparison*/
-}
-
-/*If the variable name is not found, print an error message*/
-fprintf(stderr, "Environment variable '%s' not found!\n", variable_name);
-return (NULL);
-}
-
