@@ -1,18 +1,18 @@
 #include "sshell.h"
 
 /**
- * tkn_free - frees the tokens
- * @token_array: double pointer to tokens for freeing
+ * token_free - frees the tokens
+ * @tkn_array: double pointer to tokens for freeing
  */
 
-void tkn_free(char **token_array)
+void token_free(char **tkn_array)
 {
-	int k = 0;
+	int index = 0;
 
-	while (token_array[k] != NULL)
+	while (tkn_array[index] != NULL)
 	{
-		free(token_array[k]);
-		k++;
+		free(tkn_array[index]);
+		index++;
 	}
-	free(token_array[k]);
+	free(tkn_array[index]);
 }
