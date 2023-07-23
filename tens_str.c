@@ -1,4 +1,4 @@
-#include "simple_shell.h"
+#include "sshell.h"
 
 /**
  * tens_point - finds mult factor of tens

@@ -1,4 +1,4 @@
-#include "simple_shell.h"
+#include "sshell.h"
 
 /**
  * str_len - finds length of a string

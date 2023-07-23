@@ -25,10 +25,6 @@ typedef struct paths
 	struct paths *next;
 } path_t;
 
-int str_cmp(char *s1, char *s2);
-char *str_dup(char *s);
-char *rea_lloc(char *d);
-int atois(char *s);
 void list_free(path_t *h);
 void tkn_free(char **token_array);
 void control_c(int sig);
@@ -52,5 +48,8 @@ int _putchar(char c);
 int exec_cmd(char **arr, char **env, char **v, char *l, char *new_l, int cmdn);
 void printprompt(void);
 char **str_tkn(char *l);
-
+int str_cmp(char *s1, char *s2);
+char *str_dup(char *s);
+char *rea_lloc(char *d);
+int atois(char *s);
 #endif

@@ -1,4 +1,4 @@
-#include "simple_shell.h"
+#include "sshell.h"
 #define STRING_DELIM " \t\0"
 
 /**
