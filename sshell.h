@@ -52,4 +52,6 @@ int str_cmp(char *s1, char *s2);
 char *str_dup(char *s);
 char *rea_lloc(char *d);
 int atois(char *s);
+int tenspoint(int start_index, char *number_str);
+
 #endif

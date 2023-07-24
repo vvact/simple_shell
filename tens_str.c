@@ -1,21 +1,23 @@
 #include "sshell.h"
 
 /**
- * tens_point - finds mult factor of tens
- * @k: counter of where the no begins in str
- * @m: pointer to the string
+ * tenspoint- finds mult factor of tens
+ * @start_index: counter of where the no begins in str
+ * @number_str: pointer to the string
  * Return: tens multiplier
  */
 
-int tens_point(int k, char *m)
+int tenspoint(int start_index, char *number_str)
 {
-	double tenth = 1;
+double tens_multiplier = 1;
 
-	while (m[k] >= '0' && m[k] <= '9')
-	{
-		tenth *= 10;
-		k++;
-	}
-	tenth /= 10;
-	return ((int) tenth);
+while (number_str[start_index] >= '0' && number_str[start_index] <= '9')
+{
+tens_multiplier *= 10;
+start_index++;
+}
+
+tens_multiplier /= 10;
+
+return ((int)tens_multiplier);
 }
