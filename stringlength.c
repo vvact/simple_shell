@@ -1,22 +1,22 @@
 #include "sshell.h"
 
 /**
- * str_len - finds length of a string
- * @s: string to use
+ * stringlength - finds length of a string
+ * @str: string to use
  * Return: length of the string
  */
 
-int str_len(char *s)
+int stringlength(char *str)
 {
-	int b = 0;
-	int le_n = 0;
+int index = 0;
+int length = 0;
 
-	if (s == NULL)
-		return (-1);
-	while (s[b] != '\0')
-	{
-		le_n = le_n + 1;
-		b++;
-	}
-	return (le_n);
+if (str == NULL)
+return (-1);
+while (str[index] != '\0')
+{
+length = length + 1;
+index++;
+}
+return (length);
 }

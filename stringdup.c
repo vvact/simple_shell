@@ -5,29 +5,34 @@
  * @s: string to duplicate
  * Return: pointer to the duplicated string
  */
-char *str_dup(char *s)
+char *string_duplicate(char *s)
 {
-	int r = 0;
-	int le_n = 0;
-	char *str;
+int index = 0;
+int length = 0;
+char *str;
 
-	if (s == NULL)
-		return (NULL);
-	while (*(s + r) != '\0')
-	{
-		le_n++;
-		r++;
-	}
+if (s == NULL)
+return (NULL);
 
-	r = 0;
-	str = malloc(sizeof(char) * le_n + 1);
-	if (str == NULL)
-		return (NULL);
-	while (*(s + r) != '\0')
-	{
-		*(str + r) = *(s + r);
-		r++;
-	}
-	*(str + r) = '\0';
-	return (str);
+while (*(s + index) != '\0')
+{
+length++;
+index++;
+}
+
+index = 0;
+str = malloc(sizeof(char) * (length + 1));
+
+if (str == NULL)
+return (NULL);
+
+while (*(s + index) != '\0')
+{
+*(str + index) = *(s + index);
+index++;
+}
+
+*(str + index) = '\0';
+
+return (str);
 }
