@@ -1,23 +1,23 @@
 #include "sshell.h"
 
 /**
- * str_cmp - compares two string
- * @s1: first string
- * @s2: second string
- * Return: if s1<s2, (-), s1>s2 (+), s1 = s2 (0)
+ * string_compare - Compare two strings.
+ * @str1: Pointer to the first string.
+ * @str2: Pointer to the second string.
+ * Return: If str1 < str2, (-), if str1 > str2 (+), if str1 = str2 (0).
  */
-int str_cmp(char *s1, char *s2)
+int string_compare(char *str1, char *str2)
 {
-	while ((*s1 == *s2) && *s1 != '\0' && *s2 != '\0')
-	{
-		s1++;
-		s2++;
-	}
+while ((*str1 == *str2) && *str1 != '\0' && *str2 != '\0')
+{
+str1++;
+str2++;
+}
 
-	if ((*s1 == '\0') && (*s2 == '\0'))
-		return (0);
-	else if (*s1 > *s2)
-		return ((int)(*s1 - *s2));
-	else
-		return ((int)(*s1 - *s2));
+if ((*str1 == '\0') && (*str2 == '\0'))
+return (0);
+else if (*str1 > *str2)
+return ((int)(*str1 - *str2));
+else
+return ((int)(*str1 - *str2));
 }
