@@ -6,26 +6,26 @@
  * @l: user's input
  * Return: array of tokens
  */
-char **str_tkn(char *l)
+char **strtkn(char *l)
 {
-	int k = 0;
+	int index = 0;
 	int tkn_index = 0;
-	char **tkn_arr;
+	char **token_array;
 	char *tkn, *tkncpy;
 
 	if (l == NULL)
 		return (NULL);
-	while (*(l + k) != '\0')
+	while (*(l + index) != '\0')
 	{
-		if (l[k] != ' ' && (l[k + 1] == ' ' || l[k + 1] == '\0'
-					|| l[k + 1] == '\t'))
+		if (l[index] != ' ' && (l[index + 1] == ' ' || l[index + 1] == '\0'
+					|| l[index + 1] == '\t'))
 			tkn_index++;
-		k++;
+		index++;
 	}
 
-	k = 0;
-	tkn_arr = malloc(sizeof(char *) * (tkn_index + 1));
-	if (tkn_arr == NULL)
+	index = 0;
+	token_array = malloc(sizeof(char *) * (tkn_index + 1));
+	if (token_array == NULL)
 		return (NULL);
 	tkn = strtok(l, STRING_DELIM);
 	while (tkn != NULL)
@@ -33,13 +33,13 @@ char **str_tkn(char *l)
 		tkncpy = str_dup(tkn);
 		if (tkncpy == NULL)
 		{
-			free(tkn_arr);
+			free(token_array);
 			return (NULL);
 		}
-		*(tkn_arr + k) = tkncpy;
+		*(token_array + index) = tkncpy;
 		tkn = strtok(NULL, STRING_DELIM);
-		k++;
+		index++;
 	}
-	*(tkn_arr + k) = NULL;
-	return (tkn_arr);
+	*(token_array + index) = NULL;
+	return (token_array);
 }
