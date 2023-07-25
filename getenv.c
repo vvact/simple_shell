@@ -2,28 +2,34 @@
 
 /**
  * get_env - searches for env variables
- * @jina: pointer to the var name
- * @env: double pointer to env var
+ * @variable_name: pointer to the var name
+ * @env_list: double pointer to env var
  * Return: ptr to the env var
  */
-char *get_env(const char *jina, char **env)
+char *get_env(const char *variable_name, char **env_list)
 {
-	int k = 0, m = 0;
+int env_index = 0;
+int char_index = 0;
 
-	if (jina == NULL || env == NULL || *env == NULL)
-		return (NULL);
-	while (env[k] != NULL)
-	{
-		while (env[k][m] == jina[m])
-			m++;
-		if (env[k][m] == '=')
-		{
-			m++;
-			return (&(env[k][m]));
-		}
-		k++;
-		m = 0;
-	}
-	write(STDOUT_FILENO, "env var not found!", 18);
-	return (NULL);
+if (variable_name == NULL || env_list == NULL || *env_list == NULL)
+return (NULL);
+
+while (env_list[env_index] != NULL)
+{
+while (env_list[env_index][char_index] == variable_name[char_index])
+char_index++;
+
+if (env_list[env_index][char_index] == '=')
+{
+char_index++;
+return (&(env_list[env_index][char_index]));
 }
+
+char_index = 0;
+env_index++;
+}
+
+write(STDOUT_FILENO, "env var not found!", 18);
+return (NULL);
+}
+

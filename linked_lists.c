@@ -8,14 +8,15 @@
 
 path_t *develop_likedlist(char *s)
 {
-	int _nodes = 1;
-	int k = 0;
-	path_t *last, *h, *temp, *_node;
+	int num_nodes = 1;
+	int index = 0;
+	path_t *last, *head, *temp, *node;
 
 	temp = malloc(sizeof(path_t));
 	if (temp == NULL)
 		return (NULL);
-	h = temp;
+	head = temp;
+
 	last = malloc(sizeof(path_t));
 	if (last == NULL)
 	{
@@ -23,25 +24,29 @@ path_t *develop_likedlist(char *s)
 		return (NULL);
 	}
 	last->next = NULL;
-	while (s[k] != '\0')
+
+	while (s[index] != '\0')
 	{
-		if (s[k] == ':')
-			_nodes++;
-		k++;
+		if (s[index] == ':')
+			num_nodes++;
+		index++;
 	}
-	while ((_nodes - 2) > 0)
+
+	while ((num_nodes - 2) > 0)
 	{
-		_node = malloc(sizeof(path_t));
-		if (_node == NULL)
+		node = malloc(sizeof(path_t));
+		if (node == NULL)
 		{
 			free(temp);
 			free(last);
 			return (NULL);
 		}
-		temp->next = _node;
+		temp->next = node;
 		temp = temp->next;
-		_nodes--;
+		num_nodes--;
 	}
+
 	temp->next = last;
-	return (h);
+
+	return (head);
 }
