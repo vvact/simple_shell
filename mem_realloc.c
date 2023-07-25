@@ -5,25 +5,25 @@
  * @d: pointer to an array of strings
  * Return: pointer to the reallocated mem
  */
+
 char *rea_lloc(char *d)
 {
-	int k = 0;
+	int length = 0;
 	char *new_pointer;
 
 	if (d == NULL)
 		return (NULL);
 
-	while (*(d + k) != '\n')
-		k++;
-	new_pointer = malloc(sizeof(char) * k + 1);
+	while (d[length] != '\n')
+		length++;
+
+	new_pointer = malloc(sizeof(char) * (length + 1));
 	if (new_pointer == NULL)
 		return (NULL);
-	k = 0;
-	while (*(d + k) != '\n')
-	{
-		*(new_pointer + k) = *(d + k);
-		k++;
-	}
-	*(new_pointer + k) = '\0';
+
+	for (int i = 0; i < length; i++)
+		new_pointer[i] = d[i];
+
+	new_pointer[length] = '\0';
 	return (new_pointer);
 }
