@@ -9,42 +9,52 @@
 
 char *pathhand(char *s, char **env)
 {
-	char *cant, *route;
-	path_t *lists, *temp;
-	struct stat mk;
+	char *full_path, *path_var;
+	path_t *path_list, *temp_list;
+	struct stat file_stat;
 
 	if (s == NULL || env == NULL || *env == NULL)
 		return (NULL);
-	route = get_env("PATH", env);
-	if (route == NULL)
+
+	path_var = get_env("PATH", env);
+	if (path_var == NULL)
 	{
 		write(STDERR_FILENO, "No path available", 17);
 		_exit(0);
 	}
-	lists = develop_likedlist(route);
-	if (lists == NULL)
+
+	path_list = develop_likedlist(path_var);
+	if (path_list == NULL)
 	{
 		write(STDERR_FILENO, "faulty path", 11);
 		_exit(0);
 	}
-	lists = appendnode(route, lists);
-	temp = lists;
-	while (temp != NULL)
+
+	path_list = appendnode(path_var, path_list);
+	temp_list = path_list;
+
+	while (temp_list != NULL)
 	{
-		if (route[0] == ':')
-			cant = str_concat("./", s);
+		if (path_var[0] == ':')
+			full_path = str_concat("./", s);
 		else
-			cant = str_concat(temp->directory, s);
-		if (cant == NULL)
+			full_path = str_concat(temp_list->dir, s);
+
+		if (full_path == NULL)
 			return (NULL);
-		if (stat(cant, &mk) == 0 && access(cant, X_OK) == 0)
+
+		if (stat(full_path, &file_stat) == 0 && 
+				access(full_path, X_OK) == 0)
 		{
-			list_free(lists);
-			return (cant);
+			list_free(path_list);
+			return (full_path);
 		}
-		temp = temp->next;
-		free(cant);
+
+		temp_list = temp_list->next;
+		free(full_path);
 	}
-	list_free(lists);
+
+	list_free(path_list);
 	return (NULL);
 }
+
