@@ -4,7 +4,7 @@
  * develop_likedlist - forms an empty path based on arguments
  * @s: pointer to the formed path variable
  * Return: pointer to the path_t struct
- */
+*/
 
 path_t *develop_likedlist(char *s)
 {
