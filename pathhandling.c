@@ -38,7 +38,7 @@ char *pathhand(char *s, char **env)
 		if (path_var[0] == ':')
 			full_path = str_concat("./", s);
 		else
-			full_path = str_concat(temp_list->dir, s);
+			full_path = str_concat(temp_list->directory, s);
 
 		if (full_path == NULL)
 			return (NULL);
