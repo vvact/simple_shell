@@ -10,7 +10,7 @@
 void free_everything(char *l, char *new_l, char **arr)
 {
 	tkn_free(arr);
-	free(l); `
+	free(l); 
 	free(new_l);
 	free(arr);
 }
