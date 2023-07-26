@@ -1,4 +1,4 @@
-#include "sshell.h"
+#include "simple_shell.h"
 
 /**
  * _putchar - write character to standard output
