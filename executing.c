@@ -1,8 +1,8 @@
 #include "simple_shell.h"
 
 /**
- * exec_cmd - executes an input cmd
- * @arr: pointer to arr of inputs commands
+ * exec_cmd - executes an input command
+ * @arr: pointer to array of inputs commands
  * @env: double pointer to envoiron var
  * @v: arg vector
  * @l: input from user
