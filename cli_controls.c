@@ -1,24 +1,24 @@
 #include "simple_shell.h"
 
 /**
- * control_c - handles Ctrl+C
- * @sig: signal input
+ * handle_ctrl_c - Handles Ctrl+C signal
+ * @signal_num: Signal number input
  */
-void control_c(int sig)
+void handle_ctrl_c(int signal_num)
 {
-	(void)sig;
-	write(STDOUT_FILENO, "\n$ ", 3);
+(void)signal_num;
+write(STDOUT_FILENO, "\n$ ", 3);
 }
 
 /**
- * control_d - control D handler
- * @lines: users entry
- * Return: 0 success
+ * handle_ctrl_d - Handles Ctrl+D signal
+ * @user_input: User's input
+ * Return: 0 for success
  */
-int control_d(char *lines)
+int handle_ctrl_d(char *user_input)
 {
-	free(lines);
-	if (isatty(STDIN_FILENO) == 1)
-		write(STDOUT_FILENO, "\n", 1);
-	return (0);
+free(user_input);
+if (isatty(STDIN_FILENO) == 1)
+write(STDOUT_FILENO, "\n", 1);
+return (0);
 }
