@@ -9,24 +9,21 @@
  */
 char *con_cat(char *cat, char *s1, char *s2)
 {
-	int catindex = 0;
-	int strindex = 0;
-
-	while (*(s1 + strindex) != '\0')
-	{
-		*(cat + catindex) = *(s1 + strindex);
-		catindex++;
-		strindex++;
-	}
-
-	strindex = 0;
-
-	while (*(s2 + strindex) != '\0')
-	{
-		*(cat + catindex) = *(s2 + strindex);
-		catindex++;
-		strindex++;
-	}
-	*(cat + catindex) = '\0';
-	return (cat);
+int catindex = 0;
+int strindex = 0;
+while (*(s1 + strindex) != '\0')
+{
+*(cat + catindex) = *(s1 + strindex);
+catindex++;
+strindex++;
+}
+strindex = 0;
+while (*(s2 + strindex) != '\0')
+{
+*(cat + catindex) = *(s2 + strindex);
+catindex++;
+strindex++;
+}
+*(cat + catindex) = '\0';
+return (cat);
 }
