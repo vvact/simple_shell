@@ -52,5 +52,4 @@ int _putchar(char c);
 int exec_cmd(char **arr, char **env, char **v, char *l, char *new_l, int cmdn);
 void printprompt(void);
 char **str_tkn(char *l);
-
 #endif 
